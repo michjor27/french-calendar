@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>French Time Drill: Days, Months, Times</title>
+<style>
+body{font-family:Arial,Helvetica,sans-serif;line-height:1.35;margin:24px;max-width:1100px}
+h1{font-size:22px;margin:0 0 10px 0}
+h2{font-size:18px;margin:18px 0 8px 0}
+p{margin:8px 0}
+table{border-collapse:collapse;width:100%;margin:10px 0 18px 0}
+th,td{border:1px solid #b7b7b7;padding:8px;vertical-align:top}
+th{background:#f2f2f2;text-align:left}
+button.play,button.stop{
+  font-size:14px;
+  line-height:1;
+  padding:4px 7px;
+  border:1px solid #666;
+  border-radius:6px;
+  background:#fff;
+  cursor:pointer;
+}
+button.stop{margin-left:6px}
+button.play:active,button.stop:active{transform:translateY(1px)}
+.small-note{color:#333;font-size:13px}
+.card{border:1px solid #b7b7b7;padding:14px;border-radius:10px;max-width:760px;margin:14px 0}
+.big{font-size:52px;font-weight:700}
+.label{font-size:13px;color:#333}
+</style>
+</head><body>
+<h1>French Practice: Days, Months, and Times of Day</h1>
+<h2>Self-assessment drills</h2>
+<div class="card">
+<div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;">
+<div style="min-width:320px;"><div class="label"><strong>Random Day</strong></div><button id="drillDayBtn" type="button" class="play">Start</button><button class="stop" type="button">Stop</button><div class="big" id="drillDayWord">—</div><div class="small-note">Audio: <span id="drillDayAudio">—</span></div></div>
+<div style="min-width:320px;"><div class="label"><strong>Random Month</strong></div><button id="drillMonthBtn" type="button" class="play">Start</button><button class="stop" type="button">Stop</button><div class="big" id="drillMonthWord">—</div><div class="small-note">Audio: <span id="drillMonthAudio">—</span></div></div>
+</div>
+<p class="small-note">Click Start, rehearse for 3 seconds, then the audio plays. Use Stop to cancel audio. The drill cycles through all items before repeating.</p>
+</div>
+<script type="application/json" id="daysData">[{"english": "Monday", "french": "lundi", "phonetic": "luhn-DEE", "audio": "day-lundi.mp3"}, {"english": "Tuesday", "french": "mardi", "phonetic": "mar-DEE", "audio": "day-mardi.mp3"}, {"english": "Wednesday", "french": "mercredi", "phonetic": "mehr-kruh-DEE", "audio": "day-mercredi.mp3"}, {"english": "Thursday", "french": "jeudi", "phonetic": "zhuh-DEE", "audio": "day-jeudi.mp3"}, {"english": "Friday", "french": "vendredi", "phonetic": "vahn-druh-DEE", "audio": "day-vendredi.mp3"}, {"english": "Saturday", "french": "samedi", "phonetic": "sahm-DEE", "audio": "day-samedi.mp3"}, {"english": "Sunday", "french": "dimanche", "phonetic": "dee-MAHN-sh", "audio": "day-dimanche.mp3"}]</script>
+<script type="application/json" id="monthsData">[{"english": "January", "french": "janvier", "phonetic": "zhahn-vee-AY", "audio": "month-janvier.mp3"}, {"english": "February", "french": "février", "phonetic": "fay-vree-AY", "audio": "month-fevrier.mp3"}, {"english": "March", "french": "mars", "phonetic": "mahrs", "audio": "month-mars.mp3"}, {"english": "April", "french": "avril", "phonetic": "ah-VREEL", "audio": "month-avril.mp3"}, {"english": "May", "french": "mai", "phonetic": "meh", "audio": "month-mai.mp3"}, {"english": "June", "french": "juin", "phonetic": "zh-wahn", "audio": "month-juin.mp3"}, {"english": "July", "french": "juillet", "phonetic": "zhwee-AY", "audio": "month-juillet.mp3"}, {"english": "August", "french": "août", "phonetic": "oot", "audio": "month-aout.mp3"}, {"english": "September", "french": "septembre", "phonetic": "sep-TAHMB", "audio": "month-septembre.mp3"}, {"english": "October", "french": "octobre", "phonetic": "ok-TOBR", "audio": "month-octobre.mp3"}, {"english": "November", "french": "novembre", "phonetic": "no-VAHMB", "audio": "month-novembre.mp3"}, {"english": "December", "french": "décembre", "phonetic": "day-SAHMB", "audio": "month-decembre.mp3"}]</script>
+<h2>Days of the Week (Les jours de la semaine)</h2>
+<table><thead><tr><th>English</th><th>French</th><th>Phonetic help</th><th>Audio</th></tr></thead><tbody>
+<tr><td>Monday</td><td>lundi</td><td>luhn-DEE</td><td><button class="play" data-src="day-lundi.mp3" aria-label="Play day-lundi.mp3" aria-pressed="false">▶</button></td></tr>
+<tr><td>Tuesday</td><td>mardi</td><td>mar-DEE</td><td><button class="play" data-src="day-mardi.mp3" aria-label="Play day-mardi.mp3" aria-pressed="false">▶</button></td></tr>
+<tr><td>Wednesday</td><td>mercredi</td><td>mehr-kruh-DEE</td><td><button class="play" data-src="day-mercredi.mp3" aria-label="Play day-mercredi.mp3" aria-pressed="false">▶</button></td></tr>
+<tr><td>Thursday</td><td>jeudi</td><td>zhuh-DEE</td><td><button class="play" data-src="day-jeudi.mp3" aria-label="Play day-jeudi.mp3" aria-pressed="false">▶</button></td></tr>
+<tr><td>Friday</td><td>vendredi</td><td>vahn-druh-DEE</td><td><button class="play" data-src="day-vendredi.mp3" aria-label="Play day-vendredi.mp3" aria-pressed="false">▶</button></td></tr>
+<tr><td>Saturday</td><td>samedi</td><td>sahm-DEE</td><td><button class="play" data-src="day-samedi.mp3" aria-label="Play day-samedi.mp3" aria-pressed="false">▶</button></td></tr>
+<tr><td>Sunday</td><td>dimanche</td><td>dee-MAHN-sh</td><td><button class="play" data-src="day-dimanche.mp3" aria-label="Play day-dimanche.mp3" aria-pressed="false">▶</button></td></tr>
+</tbody></table>
+<h2>Months of the Year (Les mois de l’année)</h2>
+<table><thead><tr><th>English</th><th>French</th><th>Phonetic help</th><th>Audio</th></tr></thead><tbody>
+<tr><td>January</td><td>janvier</td><td>zhahn-vee-AY</td><td><button class="play" data-src="month-janvier.mp3" aria-label="Play month-janvier.mp3" aria-pressed="false">▶</button></td></tr>
+<tr><td>February</td><td>février</td><td>fay-vree-AY</td><td><button class="play" data-src="month-fevrier.mp3" aria-label="Play month-fevrier.mp3" aria-pressed="false">▶</button></td></tr>
+<tr><td>March</td><td>mars</td><td>mahrs</td><td><button class="play" data-src="month-mars.mp3" aria-label="Play month-mars.mp3" aria-pressed="false">▶</button></td></tr>
+<tr><td>April</td><td>avril</td><td>ah-VREEL</td><td><button class="play" data-src="month-avril.mp3" aria-label="Play month-avril.mp3" aria-pressed="false">▶</button></td></tr>
+<tr><td>May</td><td>mai</td><td>meh</td><td><button class="play" data-src="month-mai.mp3" aria-label="Play month-mai.mp3" aria-pressed="false">▶</button></td></tr>
+<tr><td>June</td><td>juin</td><td>zh-wahn</td><td><button class="play" data-src="month-juin.mp3" aria-label="Play month-juin.mp3" aria-pressed="false">▶</button></td></tr>
+<tr><td>July</td><td>juillet</td><td>zhwee-AY</td><td><button class="play" data-src="month-juillet.mp3" aria-label="Play month-juillet.mp3" aria-pressed="false">▶</button></td></tr>
+<tr><td>August</td><td>août</td><td>oot</td><td><button class="play" data-src="month-aout.mp3" aria-label="Play month-aout.mp3" aria-pressed="false">▶</button></td></tr>
+<tr><td>September</td><td>septembre</td><td>sep-TAHMB</td><td><button class="play" data-src="month-septembre.mp3" aria-label="Play month-septembre.mp3" aria-pressed="false">▶</button></td></tr>
+<tr><td>October</td><td>octobre</td><td>ok-TOBR</td><td><button class="play" data-src="month-octobre.mp3" aria-label="Play month-octobre.mp3" aria-pressed="false">▶</button></td></tr>
+<tr><td>November</td><td>novembre</td><td>no-VAHMB</td><td><button class="play" data-src="month-novembre.mp3" aria-label="Play month-novembre.mp3" aria-pressed="false">▶</button></td></tr>
+<tr><td>December</td><td>décembre</td><td>day-SAHMB</td><td><button class="play" data-src="month-decembre.mp3" aria-label="Play month-decembre.mp3" aria-pressed="false">▶</button></td></tr>
+</tbody></table>
+<h2>Times of Day (Les moments de la journée)</h2>
+<table><thead><tr><th>English</th><th>French</th><th>Gender</th><th>Phonetic help</th></tr></thead><tbody>
+<tr><td>Morning</td><td>le matin</td><td>masculine</td><td>luh mah-TAN</td></tr>
+<tr><td>Noon</td><td>midi</td><td>masculine</td><td>mee-DEE</td></tr>
+<tr><td>Afternoon</td><td>l’après-midi</td><td>masculine</td><td>lah-preh-mee-DEE</td></tr>
+<tr><td>Evening</td><td>le soir</td><td>masculine</td><td>luh swahr</td></tr>
+<tr><td>Night</td><td>la nuit</td><td>feminine</td><td>lah nwee</td></tr>
+<tr><td>Midnight</td><td>minuit</td><td>masculine</td><td>mee-NWEE</td></tr>
+<tr><td>today</td><td>aujourd’hui</td><td>— (adverb)</td><td>oh-zhoor-DWEE</td></tr>
+</tbody></table>
+
+<script>
+(function(){
+  window.player = new Audio();
+  window.player.preload = "none";
+
+  // Table play buttons only (must have data-src)
+  document.addEventListener("click", function(e){
+    const btn = e.target.closest("button.play[data-src]");
+    if(!btn) return;
+    const src = btn.getAttribute("data-src");
+    window.player.pause();
+    window.player.currentTime = 0;
+    window.player.src = src;
+    window.player.play().catch(function(){});
+  });
+
+  // Stop buttons
+  document.addEventListener("click", function(e){
+    const btn = e.target.closest("button.stop");
+    if(!btn) return;
+    window.player.pause();
+    window.player.currentTime = 0;
+  });
+
+  function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
+
+  function shuffle(arr){
+    const a = arr.slice();
+    for(let i=a.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  // "Bag" randomizer: you won't repeat until all items have been used
+  let dayBag = [];
+  let monthBag = [];
+
+  function nextFromBag(kind, items){
+    let bag = (kind === "day") ? dayBag : monthBag;
+    if(!bag.length){
+      bag = shuffle(items);
+      if(kind === "day") dayBag = bag;
+      else monthBag = bag;
+    }
+    const pick = bag.pop();
+    return pick;
+  }
+
+  async function runDrill(kind){
+    const outWord = document.getElementById(kind === "day" ? "drillDayWord" : "drillMonthWord");
+    const outAudio = document.getElementById(kind === "day" ? "drillDayAudio" : "drillMonthAudio");
+    const btn = document.getElementById(kind === "day" ? "drillDayBtn" : "drillMonthBtn");
+    if(!outWord || !outAudio || !btn) return;
+
+    const jsonEl = document.getElementById(kind === "day" ? "daysData" : "monthsData");
+    const items = JSON.parse(jsonEl.textContent);
+
+    btn.disabled = true;
+    outWord.textContent = "—";
+    outAudio.textContent = "3-second rehearsal window…";
+
+    const pick = nextFromBag(kind, items);
+    outWord.textContent = pick.french;
+
+    await sleep(3000);
+
+    outAudio.textContent = "Playing…";
+    window.player.pause();
+    window.player.currentTime = 0;
+    window.player.src = pick.audio;
+
+    window.player.play().then(function(){
+      outAudio.textContent = pick.audio;
+    }).catch(function(){
+      outAudio.textContent = "Could not play: " + pick.audio + " (confirm file exists in same folder as this HTML)";
+    });
+
+    btn.disabled = false;
+  }
+
+  const dayBtn = document.getElementById("drillDayBtn");
+  if(dayBtn) dayBtn.addEventListener("click", function(){ runDrill("day"); });
+
+  const monthBtn = document.getElementById("drillMonthBtn");
+  if(monthBtn) monthBtn.addEventListener("click", function(){ runDrill("month"); });
+})();
+</script>
+
+</body></html>
